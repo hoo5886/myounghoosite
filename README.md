@@ -45,14 +45,6 @@
 
 **DB**: `mysql`
 
-## 1. mysql
-
-**userID**: `mhksite`
-
-**DB**: `mhsite_db`
-
-**DBpassword**: `aptx4896`
-
 # III. What I’ve learn during developing it
 
 ## 1. Difference the two things (DTO vs VO)
