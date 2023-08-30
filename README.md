@@ -44,24 +44,3 @@
 **BackEnd**: `Java`, `SpringBoot`, `SpringSecurity`, `Spring Data JPA`
 
 **DB**: `mysql`
-
-# III. What I’ve learn during developing it
-
-## 1. Difference the two things (DTO vs VO)
-
-### Key insights
-
-- 💡 The terms DTO and VO are often used interchangeably, causing confusion, but DTO is specifically for data transfer and VO is for value expression.
-- 🧺 DTO is an object used to pass data between layers, with the sole purpose of containing and transmitting data, without any additional logic.
-- 🤔 The DTO (Data Transfer Object) class in programming should only have getters and setters, without any other logic methods.
-- 🔄 DTOs can be made more stable and secure by removing setter methods and initializing property values through the constructor, ensuring data immutability during the delivery process.
-- 💡 Using an Entity class to pass request or response values can lead to complications and the need for frequent changes, whereas using a DTO allows for more flexibility and easier adaptation to changes in the view.
-- 💰 The concept of Value Object (VO) is similar to how we perceive currency - we don't differentiate between bills with different serial numbers, but see them as the same value.
-- 💡 Unlike DTOs, which cannot contain logic other than getter and setter methods, VO (Value Object) can contain additional logic.
-- 🔄 A DTO is not considered the same if all property values are the same, but a VO is considered the same if all property values are the same.
-
-*Summary for: https://youtu.be/z5fUkck_RZM by [Eightify](https://www.eightify.app/)*
-
-## 2. Software architecture Pattern
-
-https://mingrammer.com/translation-10-common-software-architectural-patterns-in-a-nutshell/
