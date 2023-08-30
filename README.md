@@ -36,7 +36,8 @@
 
 # II. Specification
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/05e375fa-b6ed-4991-bc5c-b5d301fdaf95/Untitled.png)
+<img width="459" alt="image" src="https://github.com/hoo5886/myounghoosite/assets/102225706/1d2c2e88-4478-49e7-8782-6c9e92f9f555">
+
 
 **FrontEnd**: `React`, `JavaScript`
 
