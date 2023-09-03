@@ -1,6 +1,7 @@
 package com.example.myounghoosite.data.dao.impl;
 
 import com.example.myounghoosite.data.dao.BoardDao;
+import com.example.myounghoosite.data.dto.BoardChangeDto;
 import com.example.myounghoosite.data.entity.Board;
 import com.example.myounghoosite.data.repository.BoardRepository;
 import java.time.LocalDateTime;
@@ -22,21 +23,22 @@ public class BoardDaoImpl implements BoardDao {
     }
 
     @Override
-    public Board selectBoard(Long id) {
-        Board selectedBoard = boardRepository.getById(id);
+    public Optional<Board> selectBoard(Long id) {
+        Optional<Board> selectedBoard = Optional.of(boardRepository.getById(id));
 
         return selectedBoard;
     }
 
     @Override
-    public Board updateBoardTitle(Long id, String title) throws Exception {
+    public Board updateBoard(Long id, BoardChangeDto changeDtoDto) throws Exception {
         Optional<Board> selectedBoard = boardRepository.findById(id);
 
         Board updatedBoard;
         if (selectedBoard.isPresent()) {
             Board board = selectedBoard.get();
 
-            board.setTitle(title);
+            board.setTitle(changeDtoDto.getTitle());
+            board.setContent(changeDtoDto.getContent());
             board.setChgDate(LocalDateTime.now());
 
             updatedBoard = boardRepository.save(board);
@@ -51,7 +53,6 @@ public class BoardDaoImpl implements BoardDao {
     public void deleteBoard(Long id) throws Exception {
         Optional<Board> selectedBoard = boardRepository.findById(id);
 
-        Board deletedBoard;
         if (selectedBoard.isPresent()) {
             Board board = selectedBoard.get();
 
