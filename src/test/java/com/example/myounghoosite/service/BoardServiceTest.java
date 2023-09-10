@@ -7,6 +7,7 @@ import com.example.myounghoosite.data.dao.BoardDao;
 import com.example.myounghoosite.data.dto.BoardDto;
 import com.example.myounghoosite.data.dto.BoardResponseDto;
 import com.example.myounghoosite.data.entity.Board;
+import com.example.myounghoosite.data.entity.User;
 import com.example.myounghoosite.service.impl.BoardServiceImpl;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -19,6 +20,7 @@ public class BoardServiceTest {
 
     private BoardDao boardDao = Mockito.mock(BoardDao.class);
     private BoardServiceImpl boardService;
+    private User user;
 
     private static LocalDateTime t = LocalDateTime.of(2023, 9, 02, 17, 30);
     private static LocalDateTime chgT = LocalDateTime.of(2023, 9, 02, 18, 30);
@@ -26,6 +28,14 @@ public class BoardServiceTest {
     @BeforeEach
     public void setUpTest() {
         boardService = new BoardServiceImpl(boardDao);
+        user = User.builder()
+            .userId(1L)
+            .email("test@tet.com")
+            .username("test")
+            .password("123")
+            .regDate(t)
+            .chgDate(chgT)
+            .build();
     }
 
     @Test
@@ -59,7 +69,7 @@ public class BoardServiceTest {
             .then(returnsFirstArg());
 
         BoardResponseDto boardResponseDto = boardService.saveBoard(
-            new BoardDto("title", "content", "boardType", t, chgT)
+            new BoardDto("title", "content", "boardType", user, t, chgT)
         );
 
         Assertions.assertEquals(boardResponseDto.getTitle(), "title");
