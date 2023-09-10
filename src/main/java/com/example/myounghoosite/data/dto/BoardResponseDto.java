@@ -1,6 +1,7 @@
 package com.example.myounghoosite.data.dto;
 
 import com.example.myounghoosite.data.entity.Board;
+import com.example.myounghoosite.data.entity.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,6 +23,7 @@ public class BoardResponseDto {
     private String title;
     private String content;
     private String boardType;
+    private User user;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime regDate;

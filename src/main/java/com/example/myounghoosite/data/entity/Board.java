@@ -6,9 +6,11 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,6 +40,15 @@ public class Board {
 
     //BorderType 확인 필요.
     private String boardType;
+
+    /**
+     * fetchType은 DB에서 데이터를 검색하는 전략을 정의.
+     * LAZY의 경우, DB 소유자를 검색하면 `필요할 때` 해당 소유자와 연관된
+     * 모든 게시글을 검색한다는 뜻.
+     * EAGER의 경우, 해당 소유자의 모든 게시글을 즉시 검색한다.
+    * */
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime regDate;
