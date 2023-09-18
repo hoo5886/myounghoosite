@@ -1,7 +1,7 @@
 package com.example.myounghoosite.data.dao.impl;
 
 import com.example.myounghoosite.data.dao.BoardDao;
-import com.example.myounghoosite.data.dto.BoardChangeDto;
+import com.example.myounghoosite.data.dto.BoardDto;
 import com.example.myounghoosite.data.entity.Board;
 import com.example.myounghoosite.data.repository.BoardRepository;
 import java.time.LocalDateTime;
@@ -30,15 +30,15 @@ public class BoardDaoImpl implements BoardDao {
     }
 
     @Override
-    public Board updateBoard(Long id, BoardChangeDto changeDtoDto) throws Exception {
+    public Board updateBoard(Long id, BoardDto changeDto) throws Exception {
         Optional<Board> selectedBoard = boardRepository.findById(id);
 
         Board updatedBoard;
         if (selectedBoard.isPresent()) {
             Board board = selectedBoard.get();
 
-            board.setTitle(changeDtoDto.getTitle());
-            board.setContent(changeDtoDto.getContent());
+            board.setTitle(changeDto.getTitle());
+            board.setContent(changeDto.getContent());
             board.setChgDate(LocalDateTime.now());
 
             updatedBoard = boardRepository.save(board);
@@ -60,6 +60,5 @@ public class BoardDaoImpl implements BoardDao {
         } else {
             throw new Exception();
         }
-
     }
 }
