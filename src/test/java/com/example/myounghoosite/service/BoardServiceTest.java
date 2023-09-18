@@ -5,6 +5,7 @@
 //
 //import com.example.myounghoosite.data.dao.BoardDao;
 //import com.example.myounghoosite.data.dto.BoardDto;
+//import com.example.myounghoosite.data.dto.BoardResponseDto;
 //import com.example.myounghoosite.data.entity.Board;
 //import com.example.myounghoosite.service.impl.BoardServiceImpl;
 //import java.time.LocalDateTime;
@@ -18,8 +19,6 @@
 //
 //    private BoardDao boardDao = Mockito.mock(BoardDao.class);
 //    private BoardServiceImpl boardService;
-//
-//
 //
 //    private static LocalDateTime t = LocalDateTime.of(2023, 9, 02, 17, 30);
 //    private static LocalDateTime chgT = LocalDateTime.of(2023, 9, 02, 18, 30);

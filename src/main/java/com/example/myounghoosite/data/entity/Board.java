@@ -1,6 +1,9 @@
 package com.example.myounghoosite.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,9 +27,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "board")
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Board {
 
     @Id
@@ -48,6 +51,12 @@ public class Board {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime chgDate;
 
+    /**
+     * fetchType은 DB에서 데이터를 검색하는 전략을 정의.
+     * LAZY의 경우, DB 소유자를 검색하면 `필요할 때` 해당 소유자와 연관된
+     * 모든 게시글을 검색한다는 뜻.
+     * EAGER의 경우, 해당 소유자의 모든 게시글을 즉시 검색한다.
+     * */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "memberId")
     private Member member;
@@ -55,5 +64,3 @@ public class Board {
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     private List<Comment> comments;
 }
-
-
