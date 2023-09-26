@@ -37,7 +37,6 @@ public class CommentServiceImpl implements CommentService {
             .regDate(comment.get().getRegDate())
             .chgDate(comment.get().getChgDate())
                                 .build();
-
         return response;
     }
 
