@@ -16,10 +16,8 @@ function Boardlist() {
           <tbody>
           {
             board.map((board, index) => <tr key={index}>
-              <td>{board.boardType}</td>
               <td>{board.title}</td>
               <td>{board.content}</td>
-              <td>{board.regDate}</td>
             </tr>)
           }
           </tbody>
