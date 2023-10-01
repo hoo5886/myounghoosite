@@ -1,11 +1,10 @@
 package com.example.myounghoosite.service.impl;
 
 import com.example.myounghoosite.data.dao.BoardDao;
-import com.example.myounghoosite.data.dto.BoardChangeDto;
 import com.example.myounghoosite.data.dto.BoardDto;
-import com.example.myounghoosite.data.dto.BoardResponseDto;
 import com.example.myounghoosite.data.entity.Board;
 import com.example.myounghoosite.service.BoardService;
+
 import java.time.LocalDateTime;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -21,25 +20,26 @@ public class BoardServiceImpl implements BoardService {
     private final BoardDao boardDao;
 
     @Override
-    public BoardResponseDto getBoard(Long boardId) {
+    public BoardDto getBoard(Long boardId) {
         LOGGER.info("[getBoard] input boardId : {}", boardId);
         Optional<Board> board = Optional.of(boardDao.selectBoard(boardId).get());
 
-        LOGGER.info("[getBoard] boardId : {}, board title : {}", board.get().getBoardId(), board.get().getTitle());
-        BoardResponseDto boardResponseDto = BoardResponseDto
-                                                .builder()
-                                                .boardId(board.get().getBoardId())
-                                                .title(board.get().getTitle())
-                                                .content(board.get().getContent())
-                                                .boardType(board.get().getBoardType())
-                                                .regDate(board.get().getRegDate())
-                                                .chgDate(board.get().getChgDate())
-                                                .build();
-        return boardResponseDto;
+        LOGGER.info("[getBoard] boardId : {}, board title : {}",
+            board.get().getBoardId(), board.get().getTitle());
+        BoardDto response = BoardDto
+                            .builder()
+                            .boardId(board.get().getBoardId())
+                            .title(board.get().getTitle())
+                            .content(board.get().getContent())
+                            .boardType(board.get().getBoardType())
+                            .regDate(board.get().getRegDate())
+                            .chgDate(board.get().getChgDate())
+                            .build();
+        return response;
     }
 
     @Override
-    public BoardResponseDto saveBoard(BoardDto boardDto) {
+    public BoardDto saveBoard(BoardDto boardDto) {
         LOGGER.info("[saveBoard] boardDto : {}", boardDto.toString());
         Board board = Board.builder()
             .title(boardDto.getTitle())
@@ -50,9 +50,9 @@ public class BoardServiceImpl implements BoardService {
             .build();
 
         Board savedBoard = boardDao.insertBoard(board);
-        LOGGER.info("[saverdBoard] savedBoard : {}", savedBoard);
+        LOGGER.info("[savedBoard] savedBoard : {}", savedBoard);
 
-        BoardResponseDto boardResponseDto = BoardResponseDto.builder()
+        BoardDto response = BoardDto.builder()
             .boardId(savedBoard.getBoardId())
             .title(savedBoard.getTitle())
             .content(savedBoard.getContent())
@@ -61,14 +61,14 @@ public class BoardServiceImpl implements BoardService {
             .chgDate(savedBoard.getChgDate())
             .build();
 
-        return boardResponseDto;
+        return response;
     }
 
     @Override
-    public BoardResponseDto changeBoard(Long boardId, BoardChangeDto chageDto) throws Exception {
-        Board changedBoard = boardDao.updateBoard(boardId, chageDto);
+    public BoardDto updateBoard(Long boardId, BoardDto boardDto) throws Exception {
+        Board changedBoard = boardDao.updateBoard(boardId, boardDto);
 
-        BoardResponseDto boardResponseDto = BoardResponseDto
+        BoardDto response = BoardDto
             .builder()
             .boardId(changedBoard.getBoardId())
             .title(changedBoard.getTitle())
@@ -77,7 +77,7 @@ public class BoardServiceImpl implements BoardService {
             .chgDate(LocalDateTime.now())
             .build();
 
-        return boardResponseDto;
+        return response;
     }
 
     @Override

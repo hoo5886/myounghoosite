@@ -1,8 +1,6 @@
 package com.example.myounghoosite.controller;
 
-import com.example.myounghoosite.data.dto.BoardChangeDto;
 import com.example.myounghoosite.data.dto.BoardDto;
-import com.example.myounghoosite.data.dto.BoardResponseDto;
 import com.example.myounghoosite.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,24 +24,24 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping
-    public ResponseEntity<BoardResponseDto> getBoard(Long boardId) {
-        BoardResponseDto boardResponseDto = boardService.getBoard(boardId);
+    public ResponseEntity<BoardDto> getBoard(Long boardId) {
+        BoardDto boardDto = boardService.getBoard(boardId);
 
-        return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
+        return ResponseEntity.status(HttpStatus.OK).body(boardDto);
     }
 
     @PostMapping()
-    public ResponseEntity<BoardResponseDto> createBoard(@RequestBody BoardDto boardDto) {
-        BoardResponseDto boardResponseDto = boardService.saveBoard(boardDto);
+    public ResponseEntity<BoardDto> createBoard(@RequestBody BoardDto boardDto) {
+        BoardDto response = boardService.saveBoard(boardDto);
 
-        return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @PutMapping()
-    public ResponseEntity<BoardResponseDto> changeBoard(@RequestBody BoardChangeDto changeDto) throws Exception {
-        BoardResponseDto boardResponseDto = boardService.changeBoard(changeDto.getBoardId(), changeDto);
+    public ResponseEntity<BoardDto> updateBoard(@RequestBody BoardDto boardDto) throws Exception {
+        BoardDto response = boardService.updateBoard(boardDto.getBoardId(), boardDto);
 
-        return ResponseEntity.status(HttpStatus.OK).body(boardResponseDto);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @DeleteMapping()

@@ -1,7 +1,7 @@
 package com.example.myounghoosite.data.dto;
 
 import com.example.myounghoosite.data.entity.Board;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.example.myounghoosite.data.entity.Member;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,22 +10,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class BoardChangeDto {
+public class CommentDto {
 
-    private Long boardId;
-    private String title;
+    private Long commentId;
     private String content;
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private String boardType;
+    private Member member;
+    private Board board;
+    private Long like;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime regDate;
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private LocalDateTime chgDate;
 }
