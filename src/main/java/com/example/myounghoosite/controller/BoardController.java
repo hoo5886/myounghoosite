@@ -2,6 +2,8 @@ package com.example.myounghoosite.controller;
 
 import com.example.myounghoosite.data.dto.BoardDto;
 import com.example.myounghoosite.service.BoardService;
+import java.util.Arrays;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +25,12 @@ public class BoardController {
      */
     private final BoardService boardService;
 
-    @GetMapping
+    @GetMapping("/hello")
+    public List<String> Hello(){
+        return Arrays.asList("리액트 스프링 ", "연결에 성공하였습니다.");
+    }
+
+    @GetMapping("/boardId")
     public ResponseEntity<BoardDto> getBoard(Long boardId) {
         BoardDto boardDto = boardService.getBoard(boardId);
 

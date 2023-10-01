@@ -39,7 +39,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
             .csrf().ignoringAntMatchers("/api/**") /* REST API 사용 예외처리 */
             .and()
             .authorizeRequests()
-            .antMatchers("/**").permitAll()
-            .anyRequest().authenticated();
+            .antMatchers("/**").permitAll();
     }
 }
