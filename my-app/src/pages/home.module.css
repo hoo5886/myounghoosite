@@ -1,0 +1,16 @@
+
+.boardItem {
+  display: inline;
+  width: 350px;
+  height: 100px;
+  /*background-color: gold;*/
+  border: 2px solid black;
+  float: left;
+  color: black;
+  padding: 10px;
+  margin: 19px;
+  
+  @media (min-width: 600px) {
+    a{width: 50%};
+  }
+}

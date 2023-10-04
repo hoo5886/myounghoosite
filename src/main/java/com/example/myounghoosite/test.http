@@ -1,0 +1,11 @@
+### 1. 기본테스트
+GET http://localhost:3000/board/main
+Content-Type: application/json
+
+### 1.1 기본테스트
+GET http://localhost:8080/board/hello
+Content-Type: application/json
+
+### 2. board/main 테스트
+GET http://localhost:8080/board/main
+Content-Type: application/json

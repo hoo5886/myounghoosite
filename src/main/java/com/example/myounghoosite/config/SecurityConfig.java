@@ -36,7 +36,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .csrf().ignoringAntMatchers("/api/**") /* REST API 사용 예외처리 */
+            .csrf().disable().cors() /* REST API 사용 예외처리 */
             .and()
             .authorizeRequests()
             .antMatchers("/**").permitAll();

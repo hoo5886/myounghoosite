@@ -5,6 +5,7 @@ import com.example.myounghoosite.data.dto.BoardDto;
 import com.example.myounghoosite.data.entity.Board;
 import com.example.myounghoosite.data.repository.BoardRepository;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,13 @@ import org.springframework.stereotype.Component;
 public class BoardDaoImpl implements BoardDao {
 
     private final BoardRepository boardRepository;
+
+    @Override
+    public List<Board> selectAll() {
+        List<Board> list = boardRepository.findAll();
+
+        return list;
+    }
 
     @Override
     public Board insertBoard(Board board) {

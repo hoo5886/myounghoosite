@@ -4,7 +4,7 @@ import './App.css'
 import {Link, Route, Routes} from "react-router-dom";
 import MyHeader from "./components/MyHeader";
 import MySidebar from "./components/MySidebar";
-// import Sidebar from "./components/Sidebar";
+import Page from "./pages/page";
 
 function App() {
   /*
@@ -25,7 +25,8 @@ function App() {
         <div style={{display: 'flex', flexDirection: 'row'}}>
           <MySidebar/>
           <Routes>
-            <Route path="/" element={<Home/>} />
+            <Route path="/board/main" element={<Home/>} />
+            <Route path="/board/:boardId" element={<Page/>} />
           </Routes>
         </div>
       </div>
