@@ -19,6 +19,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Builder
 public class MemberDto {
 
+    public MemberDto(Long memberId) {
+        this.memberId = memberId;
+    }
     private Long memberId;
     private String email;
     private String name;

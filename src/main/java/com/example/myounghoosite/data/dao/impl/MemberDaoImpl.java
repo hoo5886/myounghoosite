@@ -1,7 +1,6 @@
 package com.example.myounghoosite.data.dao.impl;
 
 import com.example.myounghoosite.data.dao.MemberDao;
-import com.example.myounghoosite.data.dto.MemberDto;
 import com.example.myounghoosite.data.entity.Member;
 import com.example.myounghoosite.data.repository.MemberRepository;
 import java.util.Optional;
@@ -27,7 +26,7 @@ public class MemberDaoImpl implements MemberDao {
     }
 
     @Override
-    public Member updateMember(Long id, MemberDto changeDto) throws Exception {
+    public Member updateMember(Long id, com.example.myounghoosite.data.dto.MemberDto changeDto) throws Exception {
         return null;
     }
 

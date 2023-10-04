@@ -25,6 +25,8 @@ public class BoardDto {
     private String boardType;
 
     private Member member;
+    private Long memberId; // 조회할때만 필요한 거라 굳이 따로 response Dto를 만들어야할까 싶었다.
+
     private List<Comment> comments = new ArrayList<>();
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")

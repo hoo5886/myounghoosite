@@ -19,7 +19,7 @@ public class CommentDto {
 
     private Long commentId;
     private String content;
-    private Member member;
+    private Member memberDto;
     private Board board;
     private Long like;
 

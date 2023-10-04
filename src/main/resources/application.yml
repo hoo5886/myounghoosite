@@ -12,7 +12,7 @@ spring:
       # update: SessionFactory가 실행될 때, 객체를 검사하여 변경된 스키마를 갱신. 기존 데이터는 유지
       # validate : update처럼 객체를 검사하지만 스키마는 건드리지 않는다. DB의 테이블 정보와 객체 정보다 다르면 에러를 발생.
       # none: ddl-auto 기능을 사용하지 않는다.
-      ddl-auto: create
+      ddl-auto: update
 #      naming:
 #        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
